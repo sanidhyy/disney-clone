@@ -9,12 +9,16 @@ import OriginalsIcon from "../assets/images/original-icon.svg";
 import MoviesIcon from "../assets/images/movie-icon.svg";
 import SeriesIcon from "../assets/images/series-icon.svg";
 
+// Header
 const Header = () => {
   return (
     <Nav>
+      {/* Brand Logo */}
       <Logo>
         <img src={logo} alt="Disney+" />
       </Logo>
+
+      {/* Nav Menu */}
       <NavMenu>
         <a href="/home">
           <img src={HomeIcon} alt="Home" />
@@ -42,11 +46,13 @@ const Header = () => {
         </a>
       </NavMenu>
 
+      {/* Login Button */}
       <Login>LOGIN</Login>
     </Nav>
   );
 };
 
+// Nav styles
 const Nav = styled.nav`
   position: fixed;
   top: 0;
@@ -62,6 +68,7 @@ const Nav = styled.nav`
   z-index: 3;
 `;
 
+// Logo styles
 const Logo = styled.a`
   padding: 0;
   cursor: pointer;
@@ -77,6 +84,7 @@ const Logo = styled.a`
   }
 `;
 
+// Nav Menu styles
 const NavMenu = styled.div`
   align-items: center;
   display: flex;
@@ -143,6 +151,7 @@ const NavMenu = styled.div`
   }
 `;
 
+// Login styles
 const Login = styled.button`
   background-color: rgba(0, 0, 0, 0.6);
   padding: 10px;

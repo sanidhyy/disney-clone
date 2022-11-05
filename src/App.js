@@ -11,7 +11,9 @@ import "./App.css";
 const App = () => {
   return (
     <Router>
+      {/* Header */}
       <Header />
+      {/* Routes */}
       <Routes>
         <Route path="/" element={<Login />} />
       </Routes>
