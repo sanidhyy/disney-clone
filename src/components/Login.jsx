@@ -52,7 +52,7 @@ const Content = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 80px 40px;
-  height: 100px;
+  height: 100%;
 `;
 
 // Background image styles
