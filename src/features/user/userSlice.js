@@ -25,6 +25,7 @@ const userSlice = createSlice({
 
 export const { setUserLoginDetails, setSignOutState } = userSlice.actions;
 
+// user details selector
 export const selectUserName = (slice) => slice.user.name;
 export const selectUserEmail = (slice) => slice.user.email;
 export const selectUserPhoto = (slice) => slice.user.photo;

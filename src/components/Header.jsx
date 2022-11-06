@@ -24,6 +24,7 @@ const Header = () => {
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
+  // handlea auth
   const handleAuth = () => {
     auth
       .signInWithPopup(provider)
@@ -35,6 +36,7 @@ const Header = () => {
       });
   };
 
+  // set user details
   const setUser = (user) => {
     dispatch(
       setUserLoginDetails({
@@ -212,6 +214,7 @@ const Login = styled.button`
   }
 `;
 
+// User image styles
 const UserImg = styled.img`
   height: 100%;
 `;
