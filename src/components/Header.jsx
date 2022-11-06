@@ -186,7 +186,7 @@ const NavMenu = styled.div`
       font-size: 13px;
       letter-spacing: 1.42px;
       line-height: 1.08;
-      padding: 2px 0;
+      padding: 10px;
       white-space: nowrap;
       position: relative;
 
