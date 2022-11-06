@@ -1,15 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import bg from "../assets/images/home-bg.png";
+import ImgSlider from "./ImgSlider";
 
+// Home
 const Home = () => {
   return (
     <Container>
-      <h1>Home</h1>
+      {/* Slider */}
+      <ImgSlider />
     </Container>
   );
 };
 
+// Container styles
 const Container = styled.main`
   position: relative;
   min-height: calc(100% - 250px);
