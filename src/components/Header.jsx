@@ -1,5 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { auth, provider } from "../firebase";
+import {
+  selectUserName,
+  selectUserPhoto,
+  setUserLoginDetails,
+} from "../features/user/userSlice";
 
 import logo from "../assets/images/logo.svg";
 import HomeIcon from "../assets/images/home-icon.svg";
@@ -11,6 +19,32 @@ import SeriesIcon from "../assets/images/series-icon.svg";
 
 // Header
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
+
+  const handleAuth = () => {
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  const setUser = (user) => {
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    );
+  };
+
   return (
     <Nav>
       {/* Brand Logo */}
@@ -18,36 +52,45 @@ const Header = () => {
         <img src={logo} alt="Disney+" />
       </Logo>
 
-      {/* Nav Menu */}
-      <NavMenu>
-        <a href="/home">
-          <img src={HomeIcon} alt="Home" />
-          <span>HOME</span>
-        </a>
-        <a>
-          <img src={SearchIcon} alt="Search" />
-          <span>SEARCH</span>
-        </a>
-        <a>
-          <img src={WatchlistIcon} alt="Watchlist" />
-          <span>WATCHLIST</span>
-        </a>
-        <a>
-          <img src={OriginalsIcon} alt="Originals" />
-          <span>ORIGINALS</span>
-        </a>
-        <a>
-          <img src={MoviesIcon} alt="Movies" />
-          <span>MOVIES</span>
-        </a>
-        <a>
-          <img src={SeriesIcon} alt="Series" />
-          <span>SERIES</span>
-        </a>
-      </NavMenu>
-
-      {/* Login Button */}
-      <Login>LOGIN</Login>
+      {!userName ? (
+        // Login Button
+        <Login onClick={handleAuth}>Login</Login>
+      ) : (
+        <>
+          {/* Nav Menu */}
+          <NavMenu>
+            <a href="/home">
+              <img src={HomeIcon} alt="Home" />
+              <span>HOME</span>
+            </a>
+            <a>
+              <img src={SearchIcon} alt="Search" />
+              <span>SEARCH</span>
+            </a>
+            <a>
+              <img src={WatchlistIcon} alt="Watchlist" />
+              <span>WATCHLIST</span>
+            </a>
+            <a>
+              <img src={OriginalsIcon} alt="Originals" />
+              <span>ORIGINALS</span>
+            </a>
+            <a>
+              <img src={MoviesIcon} alt="Movies" />
+              <span>MOVIES</span>
+            </a>
+            <a>
+              <img src={SeriesIcon} alt="Series" />
+              <span>SERIES</span>
+            </a>
+          </NavMenu>
+          <UserImg
+            src={userPhoto}
+            referrerPolicy="no-referrer"
+            alt={userName}
+          />
+        </>
+      )}
     </Nav>
   );
 };
@@ -167,6 +210,10 @@ const Login = styled.button`
     color: #090b13;
     border-color: transparent;
   }
+`;
+
+const UserImg = styled.img`
+  height: 100%;
 `;
 
 export default Header;
