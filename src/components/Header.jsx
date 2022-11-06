@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,17 @@ const Header = () => {
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
-  // handlea auth
+  // redirect if already logged in
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user);
+        navigate("/home");
+      }
+    });
+  }, [userName]);
+
+  // handle google auth
   const handleAuth = () => {
     auth
       .signInWithPopup(provider)
@@ -32,7 +42,7 @@ const Header = () => {
         setUser(result.user);
       })
       .catch((error) => {
-        alert(error.message);
+        console.error(error.message);
       });
   };
 
