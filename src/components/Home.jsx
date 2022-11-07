@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import ImgSlider from "./ImgSlider";
 import Viewers from "./Viewers";
+import Recommends from "./Recommends";
 
 import bg from "../assets/images/home-bg.png";
 
@@ -14,6 +15,8 @@ const Home = () => {
       <ImgSlider />
       {/* Viewers */}
       <Viewers />
+      {/* Recommendations */}
+      <Recommends />
     </Container>
   );
 };
