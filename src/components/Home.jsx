@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import bg from "../assets/images/home-bg.png";
+
 import ImgSlider from "./ImgSlider";
+import Viewers from "./Viewers";
+
+import bg from "../assets/images/home-bg.png";
 
 // Home
 const Home = () => {
@@ -9,6 +12,8 @@ const Home = () => {
     <Container>
       {/* Slider */}
       <ImgSlider />
+      {/* Viewers */}
+      <Viewers />
     </Container>
   );
 };
