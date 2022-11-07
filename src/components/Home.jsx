@@ -4,6 +4,9 @@ import styled from "styled-components";
 import ImgSlider from "./ImgSlider";
 import Viewers from "./Viewers";
 import Recommends from "./Recommends";
+import NewDisney from "./NewDisney";
+import Originals from "./Originals";
+import Trending from "./Trending";
 
 import bg from "../assets/images/home-bg.png";
 
@@ -17,6 +20,12 @@ const Home = () => {
       <Viewers />
       {/* Recommendations */}
       <Recommends />
+      {/* New Disney */}
+      <NewDisney />
+      {/* Originals */}
+      <Originals />
+      {/* Trending */}
+      <Trending />
     </Container>
   );
 };
