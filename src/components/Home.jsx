@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import db from "../firebase";
 import styled from "styled-components";
 
+import { selectUserName } from "../features/user/userSlice";
+import { setMovies } from "../features/movie/movieSlice";
 import ImgSlider from "./ImgSlider";
 import Viewers from "./Viewers";
 import Recommends from "./Recommends";
@@ -12,6 +16,50 @@ import bg from "../assets/images/home-bg.png";
 
 // Home
 const Home = () => {
+  const dispatch = useDispatch();
+  // select user name from redux store
+  const userName = useSelector(selectUserName);
+
+  // declare movies array
+  let recommends = [];
+  let newDisney = [];
+  let originals = [];
+  let trending = [];
+
+  useEffect(() => {
+    // fetch movies form firestore
+    db.collection("movies").onSnapshot((snapshot) => {
+      snapshot.docs.map((doc) => {
+        switch (doc.data().type) {
+          case "recommend":
+            recommends = [...recommends, { id: doc.id, ...doc.data() }];
+            break;
+          case "new":
+            newDisney = [...newDisney, { id: doc.id, ...doc.data() }];
+            break;
+          case "original":
+            originals = [...originals, { id: doc.id, ...doc.data() }];
+            break;
+          case "trending":
+            trending = [...trending, { id: doc.id, ...doc.data() }];
+            break;
+          default:
+            console.log("Recieved Unwanted data from firestore!");
+        }
+      });
+
+      // set movies
+      dispatch(
+        setMovies({
+          recommend: recommends,
+          newDisney: newDisney,
+          original: originals,
+          trending: trending,
+        })
+      );
+    });
+  }, [userName]);
+
   return (
     <Container>
       {/* Slider */}
