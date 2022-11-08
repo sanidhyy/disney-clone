@@ -30,7 +30,7 @@ const Header = () => {
         navigate("/home");
       }
     });
-  }, [userName]);
+  }, [userName]); // eslint-disable-line
 
   // handle google auth
   const handleAuth = () => {
