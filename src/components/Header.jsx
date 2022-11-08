@@ -22,16 +22,6 @@ const Header = () => {
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
-  // redirect if already logged in
-  useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        setUser(user);
-        navigate("/home");
-      }
-    });
-  }, [userName]); // eslint-disable-line
-
   // handle google auth
   const handleAuth = () => {
     if (!userName) {
@@ -69,7 +59,9 @@ const Header = () => {
     <Nav>
       {/* Brand Logo */}
       <Logo>
-        <img src={logo} alt="Disney+" />
+        <Link to="/">
+          <img src={logo} alt="Disney+" />
+        </Link>
       </Logo>
 
       {!userName ? (
@@ -102,11 +94,13 @@ const Header = () => {
             </a>
           </NavMenu>
           <SignOut>
+            {/* user image */}
             <UserImg
               src={userPhoto}
               referrerPolicy="no-referrer"
               alt={userName}
             />
+            {/* Sign out */}
             <DropDown>
               <span onClick={handleAuth}>Sign out</span>
             </DropDown>

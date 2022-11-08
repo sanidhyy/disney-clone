@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import db from "../firebase";
+import db, { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { selectUserName } from "../features/user/userSlice";
@@ -17,6 +18,7 @@ import bg from "../assets/images/home-bg.png";
 // Home
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   // select user name from redux store
   const userName = useSelector(selectUserName);
 
@@ -25,6 +27,15 @@ const Home = () => {
   let newDisney = [];
   let originals = [];
   let trending = [];
+
+  // redirect if not logged in
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (!user) {
+        navigate("/");
+      }
+    });
+  }, [userName, navigate]);
 
   useEffect(() => {
     // fetch movies form firestore

@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { auth } from "../firebase";
+import { selectUserName } from "../features/user/userSlice";
 
 import bg from "../assets/images/login-bg.jpg";
 import CTALogo1 from "../assets/images/cta-logo-one.svg";
@@ -7,6 +11,18 @@ import CTALogo2 from "../assets/images/cta-logo-two.png";
 
 // Login
 const Login = () => {
+  const navigate = useNavigate();
+  const userName = useSelector(selectUserName);
+
+  // redirect if already logged in
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        navigate("/home");
+      }
+    });
+  }, [userName, navigate]);
+
   return (
     <Container>
       <Content>
