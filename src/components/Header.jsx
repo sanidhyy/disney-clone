@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from "../firebase";
 import {
   selectUserName,
@@ -11,12 +11,9 @@ import {
 } from "../features/user/userSlice";
 
 import logo from "../assets/images/logo.svg";
-import HomeIcon from "../assets/images/home-icon.svg";
-import SearchIcon from "../assets/images/search-icon.svg";
-import WatchlistIcon from "../assets/images/watchlist-icon.svg";
-import OriginalsIcon from "../assets/images/original-icon.svg";
-import MoviesIcon from "../assets/images/movie-icon.svg";
-import SeriesIcon from "../assets/images/series-icon.svg";
+import GithubIcon from "../assets/images/github-icon.svg";
+
+import { navLinks } from "../data";
 
 // Header
 const Header = () => {
@@ -82,29 +79,26 @@ const Header = () => {
         <>
           {/* Nav Menu */}
           <NavMenu>
-            <a href="/home">
-              <img src={HomeIcon} alt="Home" />
-              <span>HOME</span>
-            </a>
-            <a>
-              <img src={SearchIcon} alt="Search" />
-              <span>SEARCH</span>
-            </a>
-            <a>
-              <img src={WatchlistIcon} alt="Watchlist" />
-              <span>WATCHLIST</span>
-            </a>
-            <a>
-              <img src={OriginalsIcon} alt="Originals" />
-              <span>ORIGINALS</span>
-            </a>
-            <a>
-              <img src={MoviesIcon} alt="Movies" />
-              <span>MOVIES</span>
-            </a>
-            <a>
-              <img src={SeriesIcon} alt="Series" />
-              <span>SERIES</span>
+            {navLinks.map(({ name, icon, url }, i) => (
+              <Link to={url} key={`Link-${i}`}>
+                {/* Icon */}
+                <img src={icon} alt={name} />
+                {/* Name */}
+                <span>{name}</span>
+              </Link>
+            ))}
+
+            {/* Github Source Code */}
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noreferrer noopener"
+              title="View Source Code"
+            >
+              {/* Icon */}
+              <img src={GithubIcon} alt="Github" />
+              {/* Name */}
+              <span>Github</span>
             </a>
           </NavMenu>
           <SignOut>
@@ -142,7 +136,6 @@ const Nav = styled.nav`
 // Logo styles
 const Logo = styled.a`
   padding: 0;
-  cursor: pointer;
   width: 80px;
   margin-top: 4px;
   max-height: 70px;
@@ -186,9 +179,10 @@ const NavMenu = styled.div`
       font-size: 13px;
       letter-spacing: 1.42px;
       line-height: 1.08;
-      padding: 10px;
+      padding: 8px;
       white-space: nowrap;
       position: relative;
+      text-transform: uppercase;
 
       &:before {
         background-color: rgb(249, 249, 249);
