@@ -87,7 +87,7 @@ const Wrap = styled.div`
   }
 
   &:hover {
-    box-shadow: rgb(0 0 0 / 80%) 0 40px 58px --16px,
+    box-shadow: rgb(0 0 0 / 80%) 0 40px 58px -16px,
       rgb(0 0 0 / 72%) 0 30px 22px -10px;
     transform: scale(1.05);
     border-color: rgba(249, 249, 249, 0.8);
@@ -108,7 +108,7 @@ const Container = styled.div`
   grid-template-columns: repeat(5, minmax(0, 1fr));
 
   @media only screen and (max-width: 768px) {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `;
 

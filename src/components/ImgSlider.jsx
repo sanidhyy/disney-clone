@@ -24,24 +24,16 @@ const ImgSlider = () => {
   return (
     <Carousel {...settings}>
       <Wrap>
-        <a>
-          <img src={Slider1} alt="Slider Badging" />
-        </a>
+        <img src={Slider1} alt="Slider Badging" />
       </Wrap>
       <Wrap>
-        <a>
-          <img src={Slider2} alt="Slider Scale" />
-        </a>
+        <img src={Slider2} alt="Slider Scale" />
       </Wrap>
       <Wrap>
-        <a>
-          <img src={Slider3} alt="Slider Badag" />
-        </a>
+        <img src={Slider3} alt="Slider Badag" />
       </Wrap>
       <Wrap>
-        <a>
-          <img src={Slider4} alt="Slider Scales" />
-        </a>
+        <img src={Slider4} alt="Slider Scales" />
       </Wrap>
     </Carousel>
   );
@@ -87,29 +79,23 @@ const Carousel = styled(Slider)`
 
 // Wrap styles
 const Wrap = styled.div`
-  border-radius: 4px;
-  cursor: pointer;
   position: relative;
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 69%) 0 26px 30px -10px,
+    rgb(0 0 0 / 73%) 0 16px 10px -10px;
+  display: block;
+  position: relative;
+  padding: 4px;
 
-  a {
-    border-radius: 4px;
-    box-shadow: rgb(0 0 0 / 69%) 0 26px 30px -10px,
-      rgb(0 0 0 / 73%) 0 16px 10px -10px;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    padding: 4px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 
-    img {
-      width: 100%;
-      height: 100%;
-    }
-
-    &:hover {
-      padding: 0;
-      border: 4px solid rgba(249, 249, 249, 0.6);
-      transition-duration: 0.3s;
-    }
+  &:hover {
+    padding: 0;
+    border: 4px solid rgba(249, 249, 249, 0.6);
+    transition-duration: 0.3s;
   }
 `;
 
