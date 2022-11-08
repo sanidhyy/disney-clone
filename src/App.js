@@ -6,9 +6,6 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Detail from "./components/Detail";
 
-// CSS
-import "./App.css";
-
 // App
 const App = () => {
   return (
