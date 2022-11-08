@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import db from "../firebase";
 import styled from "styled-components";
 
 import PlayBlack from "../assets/images/play-black.png";
@@ -6,22 +8,35 @@ import PlayWhite from "../assets/images/play-white.png";
 import GroupIcon from "../assets/images/group-icon.png";
 
 const Detail = () => {
+  const { id } = useParams();
+  const [detailData, setDetailData] = useState({});
+
+  useEffect(() => {
+    db.collection("movies")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setDetailData(doc.data());
+        } else {
+          console.log("No Such Document in firebase!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, [id]);
+
   return (
     <Container>
       {/* Background Image */}
       <Background>
-        <img
-          src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/28F85D4A1F7CA135B7B20B3EDB42EDA73196C2A71C52C5400A6C2285F8E071BE/scale?width=1440&aspectRatio=1.78&format=jpeg"
-          alt="My music story"
-        />
+        <img src={detailData.backgroundImg} alt={detailData.title} />
       </Background>
 
       {/* Title */}
       <ImageTitle>
-        <img
-          src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/97BB36F8B9FC053F561894DD7B1C42C4FD20E63560F481CBCB3B9D3600CFCA3B/scale?width=1440&aspectRatio=1.78"
-          alt="My music story"
-        />
+        <img src={detailData.titleImg} alt={detailData.title} />
       </ImageTitle>
 
       {/* Content */}
@@ -51,10 +66,10 @@ const Detail = () => {
           </GroupWatch>
         </Controls>
         {/* Sub title */}
-        <SubTitle>SubTitle</SubTitle>
+        <SubTitle>{detailData.subtitle}</SubTitle>
 
         {/* Description */}
-        <Description>Description</Description>
+        <Description>{detailData.description}</Description>
       </ContentMeta>
     </Container>
   );
@@ -99,7 +114,7 @@ const ImageTitle = styled.div`
   height: 30vw;
   min-height: 170px;
   padding-bottom: 24px;
-  width: 100px;
+  width: 100%;
 
   img {
     max-width: 600px;
