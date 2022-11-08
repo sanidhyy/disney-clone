@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import PlayBlack from "../assets/images/play-black.png";
 import PlayWhite from "../assets/images/play-white.png";
+import GroupIcon from "../assets/images/group-icon.png";
 
 const Detail = () => {
   return (
@@ -25,16 +26,35 @@ const Detail = () => {
 
       {/* Content */}
       <ContentMeta>
+        {/* Controls */}
         <Controls>
+          {/* Play */}
           <Player>
             <img src={PlayBlack} alt="Play" />
             <span>Play</span>
           </Player>
+          {/* Play Trailer */}
           <Trailer>
             <img src={PlayWhite} alt="Play Trailer" />
             <span>Trailer</span>
           </Trailer>
+          {/* Add List */}
+          <AddList title="Add to List">
+            <span />
+            <span />
+          </AddList>
+          {/* Group Watch */}
+          <GroupWatch title="Watch with others">
+            <div>
+              <img src={GroupIcon} alt="Group Icon" />
+            </div>
+          </GroupWatch>
         </Controls>
+        {/* Sub title */}
+        <SubTitle>SubTitle</SubTitle>
+
+        {/* Description */}
+        <Description>Description</Description>
       </ContentMeta>
     </Container>
   );
@@ -144,6 +164,83 @@ const Trailer = styled(Player)`
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgb(249, 249, 249);
   color: rgb(249, 249, 249);
+`;
+
+// Add List styles
+const AddList = styled.div`
+  margin-right: 16px;
+  height: 44px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
+
+  span {
+    background-color: rgb(249, 249, 249);
+    display: inline-block;
+
+    &:first-child {
+      height: 2px;
+      transform: translate(1px, 0) rotate(0deg);
+      width: 16px;
+    }
+
+    &:nth-child(2) {
+      height: 16px;
+      transform: translateX(-8px) rotate(0deg);
+      width: 2px;
+    }
+  }
+`;
+
+// Group watch styles
+const GroupWatch = styled.div`
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: #fff;
+
+  div {
+    height: 40px;
+    width: 40px;
+    background: rgb(0, 0, 0);
+    border-radius: 50%;
+
+    img {
+      width: 100%;
+    }
+  }
+`;
+
+// Sub title styles
+const SubTitle = styled.div`
+  color: rgb(249, 249, 249);
+  font-size: 15px;
+  min-height: 20px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+`;
+
+// Description styles
+const Description = styled.div`
+  line-height: 1.4;
+  font-size: 20px;
+  padding: 16px 0;
+  color: rgb(249, 249, 249);
+
+  @media only screen and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export default Detail;
