@@ -1,10 +1,16 @@
-import HomeIcon from "../assets/images/home-icon.svg";
-import SearchIcon from "../assets/images/search-icon.svg";
-import WatchlistIcon from "../assets/images/watchlist-icon.svg";
-import OriginalsIcon from "../assets/images/original-icon.svg";
-import MoviesIcon from "../assets/images/movie-icon.svg";
-import SeriesIcon from "../assets/images/series-icon.svg";
+// Contains dummy data for web app
+// Don't remove anything from here (if not sure)
 
+import {
+  HomeIcon,
+  SearchIcon,
+  WatchlistIcon,
+  OriginalsIcon,
+  MoviesIcon,
+  SeriesIcon,
+} from "../assets/images";
+
+// Navbar Links
 export const navLinks = [
   {
     name: "Home",
