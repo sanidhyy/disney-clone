@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { Slider1, Slider2, Slider3, Slider4 } from "../assets/images";
+import { sliderData } from "../data";
 
 // Image Slider
 const ImgSlider = () => {
@@ -20,18 +20,11 @@ const ImgSlider = () => {
 
   return (
     <Carousel {...settings}>
-      <Wrap>
-        <img src={Slider1} alt="Slider Badging" />
-      </Wrap>
-      <Wrap>
-        <img src={Slider2} alt="Slider Scale" />
-      </Wrap>
-      <Wrap>
-        <img src={Slider3} alt="Slider Badag" />
-      </Wrap>
-      <Wrap>
-        <img src={Slider4} alt="Slider Scales" />
-      </Wrap>
+      {sliderData.map((slide, i) => (
+        <Wrap key={`slide-${i}`}>
+          <img src={slide.src} alt={slide.name} title={slide.name} />
+        </Wrap>
+      ))}
     </Carousel>
   );
 };

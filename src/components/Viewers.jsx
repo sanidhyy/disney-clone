@@ -1,58 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 
-// Images
-import {
-  DisneyView,
-  MarvelView,
-  NationalView,
-  PixarView,
-  StarwarsView,
-} from "../assets/images";
-
-// Videos
-import {
-  DisneyVideo,
-  MarvelVideo,
-  NationalVideo,
-  PixarVideo,
-  StarwarsVideo,
-} from "../assets/videos";
+import { viewersData } from "../data";
 
 // Viewers
 const Viewers = () => {
+  let videoSettings = {
+    autoPlay: true,
+    loop: true,
+    playsInline: true,
+    muted: true,
+  };
+
   return (
     <Container>
-      <Wrap>
-        <img src={DisneyView} alt="Disney" />
-        <video autoPlay={true} loop={true} playsInline={true} muted={true}>
-          <source src={DisneyVideo} type="video/mp4" />
-        </video>
-      </Wrap>
-      <Wrap>
-        <img src={MarvelView} alt="Marvel" />
-        <video autoPlay={true} loop={true} playsInline={true} muted={true}>
-          <source src={MarvelVideo} type="video/mp4" />
-        </video>
-      </Wrap>
-      <Wrap>
-        <img src={NationalView} alt="National" />
-        <video autoPlay={true} loop={true} playsInline={true} muted={true}>
-          <source src={NationalVideo} type="video/mp4" />
-        </video>
-      </Wrap>
-      <Wrap>
-        <img src={PixarView} alt="Pixar" />
-        <video autoPlay={true} loop={true} playsInline={true} muted={true}>
-          <source src={PixarVideo} type="video/mp4" />
-        </video>
-      </Wrap>
-      <Wrap>
-        <img src={StarwarsView} alt="Starwars" />
-        <video autoPlay={true} loop={true} playsInline={true} muted={true}>
-          <source src={StarwarsVideo} type="video/mp4" />
-        </video>
-      </Wrap>
+      {viewersData.map((view, i) => (
+        <Wrap key={`View-${i}`} title={view.name}>
+          {/* Thumbnail Image */}
+          <img src={view.imageSrc} alt={view.name} />
+          {/* Video */}
+          <video {...videoSettings}>
+            <source src={view.videoSrc} type="video/mp4" />
+          </video>
+        </Wrap>
+      ))}
     </Container>
   );
 };
