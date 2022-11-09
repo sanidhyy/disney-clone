@@ -106,10 +106,13 @@ const Header = () => {
               src={userPhoto}
               referrerPolicy="no-referrer"
               alt={userName}
+              title={userName}
             />
             {/* Sign out */}
             <DropDown>
-              <span onClick={handleAuth}>Sign out</span>
+              <span onClick={handleAuth} title="Sign out">
+                Sign out
+              </span>
             </DropDown>
           </SignOut>
         </>
