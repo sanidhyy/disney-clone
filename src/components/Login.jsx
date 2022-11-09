@@ -5,9 +5,7 @@ import { useSelector } from "react-redux";
 import { auth } from "../firebase";
 import { selectUserName } from "../features/user/userSlice";
 
-import bg from "../assets/images/login-bg.jpg";
-import CTALogo1 from "../assets/images/cta-logo-one.svg";
-import CTALogo2 from "../assets/images/cta-logo-two.png";
+import { LoginBg, CTALogo1, CTALogo2 } from "../assets/images";
 
 // Login
 const Login = () => {
@@ -77,7 +75,7 @@ const BgImage = styled.div`
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(${bg});
+  background-image: url(${LoginBg});
   position: absolute;
   top: 0;
   right: 0;

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import db from "../firebase";
 import styled from "styled-components";
 
-import PlayBlack from "../assets/images/play-black.png";
-import PlayWhite from "../assets/images/play-white.png";
-import GroupIcon from "../assets/images/group-icon.png";
+import db from "../firebase";
+import { PlayBlack, PlayWhite, GroupIcon } from "../assets/images";
 
+// Detail
 const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [detailData, setDetailData] = useState({});
 
+  // fetch movie details
   useEffect(() => {
     db.collection("movies")
       .doc(id)
@@ -27,7 +27,7 @@ const Detail = () => {
       .catch((error) => {
         console.log("Error getting document:", error);
       });
-  }, [id]);
+  }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Container>

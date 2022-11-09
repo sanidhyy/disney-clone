@@ -5,10 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Slider1 from "../assets/images/slider-badging.jpg";
-import Slider2 from "../assets/images/slider-scale.jpg";
-import Slider3 from "../assets/images/slider-badag.jpg";
-import Slider4 from "../assets/images/slider-scales.jpg";
+import { Slider1, Slider2, Slider3, Slider4 } from "../assets/images";
 
 // Image Slider
 const ImgSlider = () => {

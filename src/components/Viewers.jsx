@@ -2,18 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 // Images
-import DisneyView from "../assets/images/viewers-disney.png";
-import MarvelView from "../assets/images/viewers-marvel.png";
-import NationalView from "../assets/images/viewers-national.png";
-import PixarView from "../assets/images/viewers-pixar.png";
-import StarwarsView from "../assets/images/viewers-starwars.png";
+import {
+  DisneyView,
+  MarvelView,
+  NationalView,
+  PixarView,
+  StarwarsView,
+} from "../assets/images";
 
 // Videos
-import DisneyVideo from "../assets/videos/video-disney.mp4";
-import MarvelVideo from "../assets/videos/video-marvel.mp4";
-import NationalVideo from "../assets/videos/video-national.mp4";
-import PixarVideo from "../assets/videos/video-pixar.mp4";
-import StarwarsVideo from "../assets/videos/video-starwars.mp4";
+import {
+  DisneyVideo,
+  MarvelVideo,
+  NationalVideo,
+  PixarVideo,
+  StarwarsVideo,
+} from "../assets/videos";
 
 // Viewers
 const Viewers = () => {

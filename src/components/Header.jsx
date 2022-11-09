@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+
 import { auth, provider } from "../firebase";
 import {
   selectUserName,
@@ -12,7 +13,6 @@ import {
 
 import logo from "../assets/images/logo.svg";
 import GithubIcon from "../assets/images/github-icon.svg";
-
 import { navLinks } from "../data";
 
 // Header
@@ -135,7 +135,7 @@ const Nav = styled.nav`
 `;
 
 // Logo styles
-const Logo = styled.a`
+const Logo = styled.div`
   padding: 0;
   width: 80px;
   margin-top: 4px;

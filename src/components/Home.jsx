@@ -15,7 +15,7 @@ import {
   Trending,
 } from ".";
 
-import bg from "../assets/images/home-bg.png";
+import { HomeBg } from "../assets/images";
 
 // Home
 const Home = () => {
@@ -105,7 +105,7 @@ const Container = styled.main`
   padding: calc(3.5vw + 5px);
 
   &:after {
-    background: url(${bg}) center center / cover no-repeat fixed;
+    background: url(${HomeBg}) center center / cover no-repeat fixed;
     content: "";
     position: absolute;
     inset: 0;
