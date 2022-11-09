@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import db, { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
@@ -21,69 +21,61 @@ import bg from "../assets/images/home-bg.png";
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // select user name from redux store
   const userName = useSelector(selectUserName);
+  let recommends = [];
+  let newDisneys = [];
+  let originals = [];
+  let trending = [];
 
-  // declare movies array
-  const [recommends, setRecommends] = useState([]);
-  const [newDisney, setNewDisney] = useState([]);
-  const [originals, setOriginals] = useState([]);
-  const [trending, setTrending] = useState([]);
-
-  // redirect if not logged in
+  // check user login state
   useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
+    auth.onAuthStateChanged((user) => {
       if (!user) {
         navigate("/");
       }
     });
   }, [userName, navigate]);
 
+  // fetch movies from firebase
   useEffect(() => {
-    // fetch movies form firestore
     db.collection("movies").onSnapshot((snapshot) => {
       snapshot.docs.forEach((doc) => {
         switch (doc.data().type) {
           case "recommend":
-            setRecommends((prevRecommends) => [
-              ...prevRecommends,
-              { id: doc.id, ...doc.data() },
-            ]);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            recommends = [...recommends, { id: doc.id, ...doc.data() }];
             break;
+
           case "new":
-            setNewDisney((prevNewDisney) => [
-              ...prevNewDisney,
-              { id: doc.id, ...doc.data() },
-            ]);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            newDisneys = [...newDisneys, { id: doc.id, ...doc.data() }];
             break;
+
           case "original":
-            setOriginals((prevOriginal) => [
-              ...prevOriginal,
-              { id: doc.id, ...doc.data() },
-            ]);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            originals = [...originals, { id: doc.id, ...doc.data() }];
             break;
+
           case "trending":
-            setTrending((prevTrending) => [
-              ...prevTrending,
-              { id: doc.id, ...doc.data() },
-            ]);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            trending = [...trending, { id: doc.id, ...doc.data() }];
             break;
           default:
-            console.log("Recieved Unwanted data from firestore!");
+            console.log("Unwanted data recieved from firebase!");
         }
       });
 
-      // set movies
+      // set movies to redux store
       dispatch(
         setMovies({
           recommend: recommends,
-          newDisney: newDisney,
+          newDisney: newDisneys,
           original: originals,
           trending: trending,
         })
       );
     });
-  }, [userName, dispatch, newDisney, originals, recommends, trending]);
+  }, [userName]);
 
   return (
     <Container>
@@ -91,11 +83,11 @@ const Home = () => {
       <ImgSlider />
       {/* Viewers */}
       <Viewers />
-      {/* Recommendations */}
+      {/* Recommended */}
       <Recommends />
-      {/* New Disney */}
+      {/* New to disney+ */}
       <NewDisney />
-      {/* Originals */}
+      {/* Disney originals */}
       <Originals />
       {/* Trending */}
       <Trending />

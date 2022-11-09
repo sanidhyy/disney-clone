@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import db from "../firebase";
 import styled from "styled-components";
 
@@ -9,6 +9,7 @@ import GroupIcon from "../assets/images/group-icon.png";
 
 const Detail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [detailData, setDetailData] = useState({});
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const Detail = () => {
           setDetailData(doc.data());
         } else {
           console.log("No Such Document in firebase!");
+          navigate("/");
         }
       })
       .catch((error) => {

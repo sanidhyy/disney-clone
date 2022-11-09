@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,6 +21,13 @@ const Header = () => {
   const navigate = useNavigate();
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
+
+  // check user login state
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) setUser(user);
+    });
+  }, [userName]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // handle google auth
   const handleAuth = () => {
