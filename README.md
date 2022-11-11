@@ -61,6 +61,20 @@ export default db;
 
 **NOTE:** Make sure you never share your config online.
 
+8. To enable Google Auth, go to **Authorisation/Get Started**
+
+9. Click on Google and Enable. Then, Click Save.
+
+![Enable Google Auth](https://user-images.githubusercontent.com/71302066/201348852-2137ed2f-03b1-47f0-9cda-29b8a6771dca.png "Enable Google Auth")
+
+10. Now, once Google Authentication is Enabled. Create a firestore database to fetch movie details.
+
+11. Go to **Firestore Database/Create Database**. Start in test mode. Select best firestore location.
+
+12. Create a new collection named _movies_. You will find all movies info in _disneyPlusMoviesData.json_ file. You can add your custom movies too.
+
+![Create Movies Collection](https://user-images.githubusercontent.com/71302066/201350127-d0236496-1fc8-46a9-81ec-6c0310d9a99e.png "Create Movies Collection")
+
 ## :pushpin: How to use this App?
 
 1. Clone this **repository** to your local computer.
