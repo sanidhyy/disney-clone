@@ -1,8 +1,111 @@
-# Getting Started with Create React App
+# Modern Disney Clone using React JS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Modern Disney Clone using React JS](https://user-images.githubusercontent.com/71302066/201341087-e0d292e3-cc71-4691-b274-cb662b62da23.png "Modern Disney Clone using React JS")
 
-## Available Scripts
+[![Ask Me Anything!](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/Technical-Shubham-tech "Ask Me Anything!")
+[![GitHub license](https://img.shields.io/github/license/Technical-Shubham-tech/disney-clone)](https://github.com/Technical-Shubham-tech/disney-clone/blob/main/LICENSE.md "GitHub license")
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Technical-Shubham-tech/disney-clone/commits/main "Maintenance")
+[![GitHub branches](https://badgen.net/github/branches/Technical-Shubham-tech/disney-clone?max-age=2592000)](https://github.com/Technical-Shubham-tech/disney-clone/branches "GitHub branches")
+[![Github commits](https://badgen.net/github/commits/Technical-Shubham-tech/disney-clone/main?max-age=2592000)](https://github.com/Technical-Shubham-tech/disney-clone/commits "Github commits")
+[![Website Status](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://clonedisneyplus.web.app "Website Status")
+[![GitHub issues](https://img.shields.io/github/issues/Technical-Shubham-tech/disney-clone)](https://github.com/Technical-Shubham-tech/disney-clone/issues "GitHub issues")
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/Technical-Shubham-tech/disney-clone)](https://github.com/Technical-Shubham-tech/disney-clone/pulls "GitHub pull requests")
+
+## ⚠️ Before you start
+
+1. Make sure **Git** and **NodeJS** is installed
+2. Create **firebase.js** file inside src folder.
+3. Contents of **firebase.js**
+
+```
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import "firebase/compat/storage";
+
+// your firebase config
+const firebaseConfig = {
+  apiKey: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  authDomain: "testapp.firebaseapp.com",
+  projectId: "testapp",
+  storageBucket: "testapp.appspot.com",
+  messagingSenderId: "0123456789",
+  appId: "1:XXXXXXXXXXX:web:XXXXXXXXXXXXXXXXXXXX",
+  measurementId: "G-XXXXXXXXXX",
+};
+
+// initialize firebase app
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const db = firebaseApp.firestore(); // firebase db
+const auth = firebase.auth(); //firebase auth
+const provider = new firebase.auth.GoogleAuthProvider(); // Google auth provider
+const storage = firebase.storage(); // firebase storage
+
+export { auth, provider, storage };
+export default db;
+```
+
+4. Now, to get your _firebaseConfig_, go to [Firebase](https://console.firebase.google.com) and create a new project.
+
+5. Go to **Project Settings** and click on **Web icon to create a web app**. Follow on-screen instructions.
+
+![Create a web app](https://user-images.githubusercontent.com/71302066/201342692-a89d4647-df4a-434a-9033-e29af466311d.png "Create a web app")
+
+6. Make sure your setup firebase hosting as well in order to host it later online.
+
+![Setup firebase hosting](https://user-images.githubusercontent.com/71302066/201343231-7d4ff5cd-6798-4e1b-a69b-40c7a60e941e.png "Setup firebase hosting")
+
+7. Now, you can copy your firebase config after redirected.
+
+![Copy firebase config](https://user-images.githubusercontent.com/71302066/201343950-ece31f95-4641-4604-acc2-bf4d63f0cb47.png "Copy firebase config")
+
+**NOTE:** Make sure you never share your config online.
+
+## :pushpin: How to use this App?
+
+1. Clone this **repository** to your local computer.
+2. Open **terminal** in root directory.
+3. Type and Run `npm install` or `yarn install`.
+4. Once packages are installed, you can start this app using `npm start` or `yarn start`.
+5. Now app is fully configured and you can start using this app :+1:.
+
+## :camera: Screenshots:
+
+![Modern UI/UX](https://user-images.githubusercontent.com/71302066/201344366-63f2ae6b-b588-4cde-b85f-657b94ca5f3e.png "Modern UI/UX")
+
+![Login Page](https://user-images.githubusercontent.com/71302066/201344467-db22b5b0-b4a4-416c-a92e-35f4d282b216.png "Login Page")
+
+![Movie Details Page](https://user-images.githubusercontent.com/71302066/201344694-1f1e6e4f-dc38-40e0-8979-1f5cc335d44e.png "Movie Details Page")
+
+## :gear: Built with
+
+[<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" width="150" height="40" />](https://www.javascript.com/ "JavaScript")
+
+[<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" width="150" />](https://reactjs.org/ "React JS")
+
+[<img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" width="150" />](https://firebase.google.com/ "Firebase")
+
+[<img src="http://ForTheBadge.com/images/badges/built-with-love.svg" alt="Built with Love">](https://github.com/Technical-Shubham-tech/ "Built with Love")
+
+## :wrench: Stats
+
+![Stats for this App](https://user-images.githubusercontent.com/71302066/201345325-97b7bc0e-6ed6-4d43-bb13-d169e40ef8bc.svg "Stats for this App")
+
+## :raised_hands: Contribute
+
+You might encounter some bugs while using this app. You are more than welcome to contribute. Just submit changes via pull request and I will review them before merging. Make sure you follow community guidelines.
+
+## :rocket: Follow Me
+
+[![GitHub followers](https://img.shields.io/github/followers/Technical-Shubham-tech?style=social&label=Follow&maxAge=2592000)](https://github.com/Technical-Shubham-tech "Follow Me")
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FTechnicalShubam)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FTechnical-Shubham-tech%2Fmedical-chat-app "Tweet")
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCNAz_hUVBG2ZUN8TVm0bmYw "Subscribe my Channel")
+
+## :star: Give A Star
+
+You can also give this repository a star to show more people and they can use this repository.
+
+## :books: Available Scripts
 
 In the project directory, you can run:
 
@@ -39,7 +142,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## :page_with_curl: Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
