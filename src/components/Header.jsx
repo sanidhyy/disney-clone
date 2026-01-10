@@ -89,7 +89,7 @@ const Header = () => {
 
             {/* Github Source Code */}
             <a
-              href="https://github.com/Technical-Shubham-tech/disney-clone"
+              href="https://github.com/sanidhyy/disney-clone"
               target="_blank"
               rel="noreferrer noopener"
               title="View Source Code"
