@@ -1,7 +1,7 @@
 ## Contributing
 
-[fork]: https://github.com/Technical-Shubham-tech/disney-clone/fork
-[pr]: https://github.com/Technical-Shubham-tech/disney-clone/compare
+[fork]: https://github.com/sanidhyy/disney-clone/fork
+[pr]: https://github.com/sanidhyy/disney-clone/compare
 [style]: https://standardjs.com/
 [code-of-conduct]: CODE_OF_CONDUCT.md
 
